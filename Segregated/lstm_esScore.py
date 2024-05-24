@@ -69,7 +69,7 @@ def getVecs(essays, model, num_features):
 # Load the Word2Vec model from the binary file
 word2vec_model = KeyedVectors.load_word2vec_format('Segregated/word2vecmodel.bin', binary=True)
 
-new_essays = ["""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut arcu eget magna fermentum feugiat nec et enim. Aliquam erat volutpat. Nulla facilisi. Vivamus ornare massa et eros consequat, quis fermentum neque tincidunt. Duis ac nisi vitae est lacinia varius nec in purus. Morbi non tellus auctor, molestie ex sed, accumsan mauris. Nulla facilisi. Proin feugiat, lorem vel tempor consectetur, massa eros sodales quam, in rutrum ipsum velit non libero. Donec in ex nec velit tincidunt facilisis. Nunc ut neque a tortor bibendum facilisis. Nulla facilisi. Integer ac neque id ipsum tincidunt elementum. Nam et mi a magna posuere ullamcorper. Sed non nisi nec enim gravida faucibus eu id lacus. Praesent vitae turpis id felis rutrum varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In bibendum quam ut mi viverra, nec cursus libero feugiat. Mauris efficitur tortor at tortor scelerisque, quis tincidunt sem pulvinar. Vivamus euismod lacinia magna, at sollicitudin eros vestibulum id. Curabitur sed interdum ex. Phasellus tincidunt augue nec augue gravida, at malesuada leo consectetur. Sed vitae neque vitae leo tristique vehicula vitae at dolor. Sed sed arcu nec justo convallis feugiat vitae a velit. Ut sit amet commodo ex. Curabitur hendrerit enim vel ex fringilla, sed volutpat nulla rhoncus. Sed interdum tellus non velit rutrum malesuada. Sed auctor, nunc ut fermentum lobortis, felis sapien dapibus nisi, nec rutrum nunc neque quis ipsum. Maecenas dapibus condimentum turpis, sed ultricies libero."""]
+new_essays = ["""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed turpis quis mauris ullamcorper fringilla. Curabitur at tortor ac leo pulvinar malesuada in vitae felis. Aliquam quis lacus a justo iaculis vulputate sit amet nec lacus. Quisque non rhoncus nisi. Donec lobortis metus id libero vulputate suscipit. Praesent a sollicitudin odio. Ut dapibus euismod nisi fermentum lobortis. Duis lobortis pharetra dignissim. Duis vel dolor at ex molestie condimentum. Morbi aliquet eros a accumsan viverra. Etiam ac erat molestie, lobortis augue ut, auctor lorem. Aenean vitae varius augue. Maecenas sit amet ultricies nibh, et faucibus nibh. Nullam tristique quam urna, vehicula lobortis nibh interdum vel. Nunc sed nunc mauris. Maecenas diam ex, ornare sit amet vehicula in, sagittis ut tortor. Donec luctus dignissim nibh, at imperdiet est tincidunt ut. Sed venenatis faucibus dolor et tincidunt. Nullam sit amet sapien id libero scelerisque accumsan non id enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."""]
 
 preprocessed_new_essays = [sent2word(essay) for essay in new_essays]
 
@@ -81,7 +81,7 @@ new_essay_vectors = getVecs(preprocessed_new_essays, word2vec_model, num_feature
 new_essay_vectors = np.array(new_essay_vectors)
 new_essay_vectors = np.reshape(new_essay_vectors, (new_essay_vectors.shape[0], 1, new_essay_vectors.shape[1]))
 
-lstm_model = load_model('Segregated/final_lstm.keras')
+lstm_model = load_model('Automatic-Essay-Scoring/Segregated/owndata_lstm.keras')
 
 # Predicting scores for the new essays using the LSTM model
 predictions = lstm_model.predict(new_essay_vectors)
